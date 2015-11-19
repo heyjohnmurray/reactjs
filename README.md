@@ -2,6 +2,9 @@
 
 I'm learning react js. Using the boilerplate from https://github.com/christianalfoni/react-app-boilerplate.
 
+* [Video Notes] (https://www.evernote.com/shard/s430/sh/5031e124-03b8-4a86-a591-174d703b3ffb/bc023335889ddd0c2899e7f14f3e81fc)
+
+
 ### Install
 
 * Clone the repo
