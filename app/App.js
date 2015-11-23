@@ -1,38 +1,36 @@
 /** @jsx React.DOM */
 var React = require('react');
 
+var ReactMixin = {
+  componentWillMount: function(){
+    console.log('will mount');
+  },
+}
+
 var App = React.createClass({
-  getInitialState: function() {
-    return {
-      text: 'this is initial state text',
-    };
+  render: function(){
+    return (
+      <div>
+        <Button txt="this is the button" />
+        <br />
+        <Label txt="this is the label" />
+      </div>
+    )
   },
-
-  // update is a custom function we've created
-  update: function(e) {
-    this.setState({text: e.target.value});
-  },
-
-	render: function() {
-		return (
-			<div>
-				<Widget text={this.state.text} update={this.update} />
-				<Widget text={this.state.text} update={this.update} />
-			</div>
-		);
-	},
-
 });
 
-var Widget  = React.createClass({
-	render: function() {
-    return (
-				<div>
-					<input type='text' onChange={this.props.update} />
-					<h1>{this.props.text}</h1>
-				</div>
-		);
-  },
+var Button = React.createClass({
+  mixins:[ReactMixin],
+  render: function(){
+    return <button>{this.props.txt}</button>
+  }
+});
+
+var Label = React.createClass({
+  mixins:[ReactMixin],
+  render: function(){
+    return <label>{this.props.txt}</label>
+  }
 });
 
 module.exports = App;
