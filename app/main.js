@@ -1,4 +1,4 @@
 /** @jsx React.DOM */
 var React = require('react');
-var App = require('./App.js');
-React.render(<App />, document.body);
+var PersonTable = require('./App.js');
+React.render(<PersonTable />, document.body);

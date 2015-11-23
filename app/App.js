@@ -1,36 +1,36 @@
 /** @jsx React.DOM */
 var React = require('react');
 
-var ReactMixin = {
-  componentWillMount: function(){
-    console.log('will mount');
+var PersonTable = React.createClass({
+  getInitialState: function(){
+    return {
+      data: [
+        {id: 1, fname: 'John', lname: 'Murray'},
+        {id: 2, fname: 'Wyatt', lname: 'Murray'},
+        {id: 3, fname: 'McKenzie', lname: 'Murray'}
+      ]
+    }
   },
-}
 
-var App = React.createClass({
+  render: function(){
+    var rows = this.state.data.map(function(person, i){
+      return <PersonRow data={person} key={i} />
+    })
+
+    return <table>{rows}</table>
+  }
+});
+
+var PersonRow = React.createClass({
   render: function(){
     return (
-      <div>
-        <Button txt="this is the button" />
-        <br />
-        <Label txt="this is the label" />
-      </div>
+      <tr>
+        <td>{this.props.data.id}</td>
+        <td>{this.props.data.fname}</td>
+        <td>{this.props.data.lname}</td>
+      </tr>
     )
-  },
-});
-
-var Button = React.createClass({
-  mixins:[ReactMixin],
-  render: function(){
-    return <button>{this.props.txt}</button>
   }
 });
 
-var Label = React.createClass({
-  mixins:[ReactMixin],
-  render: function(){
-    return <label>{this.props.txt}</label>
-  }
-});
-
-module.exports = App;
+module.exports = PersonTable;
